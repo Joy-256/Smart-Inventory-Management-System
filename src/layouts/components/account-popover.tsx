@@ -16,6 +16,8 @@ import { useRouter, usePathname } from 'src/routes/hooks';
 
 import { _myAccount } from 'src/_mock';
 
+import { useNavigate } from 'react-router-dom';
+
 // ----------------------------------------------------------------------
 
 export type AccountPopoverProps = IconButtonProps & {
@@ -50,6 +52,15 @@ export function AccountPopover({ data = [], sx, ...other }: AccountPopoverProps)
     [handleClosePopover, router]
   );
 
+  const navigate = useNavigate(); // React Router navigation function
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken"); // Clear token (if stored)
+    sessionStorage.removeItem("userData"); // Clear session (if used)
+    navigate("/sign-in"); // Redirect user to sign-in page
+  };
+
+  
   return (
     <>
       <IconButton
@@ -129,7 +140,7 @@ export function AccountPopover({ data = [], sx, ...other }: AccountPopoverProps)
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Box sx={{ p: 1 }}>
-          <Button fullWidth color="error" size="medium" variant="text">
+          <Button fullWidth color="error" size="medium" variant="text" onClick={handleLogout}>
             Logout
           </Button>
         </Box>

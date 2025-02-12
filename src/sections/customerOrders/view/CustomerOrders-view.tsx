@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
-import { _users } from 'src/_mock';
+import { _orders } from 'src/_mock';
 import { DashboardContent } from 'src/layouts/dashboard';
 
 import { Iconify } from 'src/components/iconify';
@@ -32,7 +32,7 @@ export function CustomerOrdersView() {
   const [filterName, setFilterName] = useState('');
 
   const dataFiltered: CustomerOrdersProps[] = applyFilter({
-    inputData: _users,
+    inputData: _orders,
     comparator: getComparator(table.order, table.orderBy),
     filterName,
   });
@@ -45,13 +45,6 @@ export function CustomerOrdersView() {
         <Typography variant="h4" flexGrow={1}>
           Customer Orders
         </Typography>
-        <Button
-          variant="contained"
-          color="inherit"
-          startIcon={<Iconify icon="mingcute:add-line" />}
-        >
-          New order
-        </Button>
       </Box>
 
       <Card>
@@ -70,20 +63,22 @@ export function CustomerOrdersView() {
               <CustomerOrdersTableHead
                 order={table.order}
                 orderBy={table.orderBy}
-                rowCount={_users.length}
+                rowCount={_orders.length}
                 numSelected={table.selected.length}
                 onSort={table.onSort}
                 onSelectAllRows={(checked) =>
                   table.onSelectAllRows(
                     checked,
-                    _users.map((user) => user.id)
+                    _orders.map((product) => product.id)
                   )
                 }
                 headLabel={[
-                  { id: 'name', label: 'Name' },
-                  { id: 'company', label: 'Company' },
-                  { id: 'role', label: 'Role' },
-                  { id: 'isVerified', label: 'Verified', align: 'center' },
+                  { id: 'name', label: 'Order' },
+                  { id: 'quantity', label: 'Quantity' },
+                  { id: 'prices', label: 'Price' },
+                  { id: 'stock', label: 'Stock' },
+                  { id: 'destination', label: 'Destination' },
+                  { id: 'deliveryStaff', label: 'Delivery Staff' },
                   { id: 'status', label: 'Status' },
                   { id: '' },
                 ]}
@@ -105,7 +100,7 @@ export function CustomerOrdersView() {
 
                 <TableEmptyRows
                   height={68}
-                  emptyRows={emptyRows(table.page, table.rowsPerPage, _users.length)}
+                  emptyRows={emptyRows(table.page, table.rowsPerPage, _orders.length)}
                 />
 
                 {notFound && <TableNoData searchQuery={filterName} />}
@@ -117,7 +112,7 @@ export function CustomerOrdersView() {
         <TablePagination
           component="div"
           page={table.page}
-          count={_users.length}
+          count={_orders.length}
           rowsPerPage={table.rowsPerPage}
           onPageChange={table.onChangePage}
           rowsPerPageOptions={[5, 10, 25]}

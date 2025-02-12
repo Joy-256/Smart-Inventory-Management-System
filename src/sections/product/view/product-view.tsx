@@ -81,7 +81,7 @@ export function ProductView() {
                 }
                 headLabel={[
                   { id: 'name', label: 'Name' },
-                  { id: 'price', label: 'Price' },
+                  { id: 'prices', label: 'Price' },
                   { id: 'stock', label: 'Stock' },
                   { id: 'description', label: 'Description' },
                   { id: 'category', label: 'category' },

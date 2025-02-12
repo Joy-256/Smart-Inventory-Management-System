@@ -15,17 +15,7 @@ export const navData = [
     icon: icon('ic-analytics'),
   },
   {
-    title: 'User',
-    path: '/user',
-    icon: icon('ic-user'),
-  },
-  {
-    title:"Customer Orders",
-    path:"/customerOrders",
-    icon:icon('ic-cart'),
-  },
-  {
-    title: 'Product',
+    title: 'Products',
     path: '/products',
     icon: icon('ic-cart'),
     info: (
@@ -35,18 +25,35 @@ export const navData = [
     ),
   },
   {
-    title: 'Blog',
-    path: '/blog',
-    icon: icon('ic-blog'),
+    title:"Customer Orders",
+    path:"/customerOrders",
+    icon:icon('ic-cart'),
   },
   {
-    title: 'Sign in',
-    path: '/sign-in',
-    icon: icon('ic-lock'),
+    title: 'User',
+    path: '/user',
+    icon: icon('ic-user'),
   },
   {
-    title: 'Not found',
-    path: '/404',
-    icon: icon('ic-disabled'),
+    title: 'Reports',
+    path: '/reports',
+    icon: icon('ic-barChart'),
+    kind: "header", // Fix the tuple-like incorrect format
+    segment: "reports",
+    children: [
+      {
+        segment: "sales",
+        title: "Sales",
+        icon: icon("ic-description"),
+        path: "/reports/404",
+      },
+      {
+        segment: "traffic",
+        title: "Traffic",
+        icon: icon("ic-description"),
+        path: "/reports/404",
+      },
+    ],
   },
+  
 ];

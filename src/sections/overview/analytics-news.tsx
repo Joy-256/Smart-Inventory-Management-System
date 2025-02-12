@@ -13,14 +13,14 @@ import { fToNow } from 'src/utils/format-time';
 import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
 
-import type { PostItemProps } from '../blog/post-item';
+import type { ReportItemProps } from '../report/report-item';
 
 // ----------------------------------------------------------------------
 
 type Props = CardProps & {
   title?: string;
   subheader?: string;
-  list: PostItemProps[];
+  list: ReportItemProps[];
 };
 
 export function AnalyticsNews({ title, subheader, list, ...other }: Props) {
@@ -65,13 +65,6 @@ function PostItem({ sx, item, ...other }: BoxProps & { item: Props['list'][numbe
       }}
       {...other}
     >
-      <Avatar
-        variant="rounded"
-        alt={item.title}
-        src={item.coverUrl}
-        sx={{ width: 48, height: 48, flexShrink: 0 }}
-      />
-
       <ListItemText
         primary={item.title}
         secondary={item.description}
@@ -79,9 +72,6 @@ function PostItem({ sx, item, ...other }: BoxProps & { item: Props['list'][numbe
         secondaryTypographyProps={{ mt: 0.5, noWrap: true, component: 'span' }}
       />
 
-      <Box sx={{ flexShrink: 0, color: 'text.disabled', typography: 'caption' }}>
-        {fToNow(item.postedAt)}
-      </Box>
     </Box>
   );
 }

@@ -18,12 +18,12 @@ import { Iconify } from 'src/components/iconify';
 export type ProductProps = {
   id: string;
   name: string;
-  price: number
+  prices: number
   category: string;
   status: string;
   productInfo: string;
   imageUrl: string;
-  stock: string;
+  stock: number;
 };
 
 type ProductTableRowProps = {
@@ -49,19 +49,19 @@ export function ProductTableRow({ row, selected, onSelectRow }: ProductTableRowP
         <TableCell component="th" scope="row">
           <Box gap={2} display="flex" alignItems="center">
             <ImageListItem>
-              <img alt={row.name} src={row.imageUrl} />
+              <img alt={row.name} src={row.imageUrl} style={{ width: "100px", height: "auto", borderRadius: "5px" }} />
             </ImageListItem> 
             {row.name}
           </Box>
         </TableCell>
         
-        <TableCell>{row.price}</TableCell>
+        <TableCell>{row.prices}</TableCell>
+
+        <TableCell align="center">{row.stock}</TableCell>
 
         <TableCell>{row.productInfo}</TableCell>
 
         <TableCell>{row.category}</TableCell>
-
-        <TableCell align="center">{row.stock}</TableCell>
 
         <TableCell>
           <Label color={(row.status === 'below' && 'error') || 'success'}>{row.status}</Label>

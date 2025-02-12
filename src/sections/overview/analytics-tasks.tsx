@@ -99,6 +99,21 @@ function Item({ item, checked, onChange, sx, ...other }: ItemProps) {
     console.info('DELETE', item.id);
   }, [handleClosePopover, item.id]);
 
+  const handleProgress = useCallback(() => {
+    handleClosePopover();
+    console.info('IN-PROGRESS', item.id);
+  }, [handleClosePopover, item.id]);
+
+  const handleDelivery = useCallback(() => {
+    handleClosePopover();
+    console.info('DELIVERED', item.id);
+  }, [handleClosePopover, item.id]);
+
+  const handleCancel = useCallback(() => {
+    handleClosePopover();
+    console.info('CANCELLED', item.id);
+  }, [handleClosePopover, item.id]);
+
   return (
     <>
       <Box
@@ -178,6 +193,21 @@ function Item({ item, checked, onChange, sx, ...other }: ItemProps) {
           <MenuItem onClick={handleDelete} sx={{ color: 'error.main' }}>
             <Iconify icon="solar:trash-bin-trash-bold" />
             Delete
+          </MenuItem>
+
+          <MenuItem onClick={handleProgress}>
+            <Iconify icon="solar:pen-bold" />
+            In-progress
+          </MenuItem>
+
+          <MenuItem onClick={handleDelivery}>
+            <Iconify icon="solar:share-bold" />
+            Delivered
+          </MenuItem>
+
+          <MenuItem onClick={handleCancel} sx={{ color: 'error.main' }}>
+            <Iconify icon="solar:trash-bin-trash-bold" />
+            Cancelled
           </MenuItem>
         </MenuList>
       </Popover>

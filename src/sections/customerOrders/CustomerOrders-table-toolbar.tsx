@@ -38,7 +38,7 @@ export function CustomerOrdersTableToolbar({ numSelected, filterName, onFilterNa
           fullWidth
           value={filterName}
           onChange={onFilterName}
-          placeholder="Search customer..."
+          placeholder="Search product..."
           startAdornment={
             <InputAdornment position="start">
               <Iconify width={20} icon="eva:search-fill" sx={{ color: 'text.disabled' }} />

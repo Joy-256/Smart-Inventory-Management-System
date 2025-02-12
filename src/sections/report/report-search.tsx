@@ -6,16 +6,16 @@ import Autocomplete, { autocompleteClasses } from '@mui/material/Autocomplete';
 
 import { Iconify } from 'src/components/iconify';
 
-import type { PostItemProps } from './post-item';
+import type { ReportItemProps } from './report-item';
 
 // ----------------------------------------------------------------------
 
-type PostSearchProps = {
-  posts: PostItemProps[];
+type ReportSearchProps = {
+  reports: ReportItemProps[];
   sx?: SxProps<Theme>;
 };
 
-export function PostSearch({ posts, sx }: PostSearchProps) {
+export function ReportSearch({ reports, sx }: ReportSearchProps) {
   return (
     <Autocomplete
       sx={{ width: 280 }}
@@ -32,13 +32,13 @@ export function PostSearch({ posts, sx }: PostSearchProps) {
           },
         },
       }}
-      options={posts}
-      getOptionLabel={(post) => post.title}
+      options={reports}
+      getOptionLabel={(report) => report.title}
       isOptionEqualToValue={(option, value) => option.id === value.id}
       renderInput={(params) => (
         <TextField
           {...params}
-          placeholder="Search post..."
+          placeholder="Search report..."
           InputProps={{
             ...params.InputProps,
             startAdornment: (

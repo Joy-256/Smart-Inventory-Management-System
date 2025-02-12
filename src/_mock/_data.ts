@@ -1,17 +1,21 @@
 import {
   _id,
-  _price,
   _times,
   _company,
   _boolean,
   _fullName,
   _taskNames,
-  _postTitles,
+  _reportTitles,
   _description,
   _productNames,
   _category,
   _productInfo,
   _stock,
+  _prices,
+  _deliveryStaff,
+  _destination,
+  _orderStatus,
+  _quantity,
 } from './_mock';
 
 // ----------------------------------------------------------------------
@@ -28,41 +32,23 @@ export const _users = [...Array(24)].map((_, index) => ({
   id: _id(index),
   name: _fullName(index),
   company: _company(index),
-  isVerified: _boolean(index),
   avatarUrl: `/assets/images/avatar/avatar-${index + 1}.webp`,
   status: index % 4 ? 'active' : 'banned',
   role:
     [
-      'Leader',
-      'Hr Manager',
-      'UI Designer',
-      'UX Designer',
-      'UI/UX Designer',
-      'Project Manager',
-      'Backend Developer',
-      'Full Stack Designer',
-      'Front End Developer',
-      'Full Stack Developer',
-      'Supplier'
-    ][index] || 'UI Designer',
+      'Admin',
+      'Manager',
+      'Staff',
+      'Supplier',
+    ][index] || 'Staff',
 }));
 
 // ----------------------------------------------------------------------
 
-export const _posts = [...Array(23)].map((_, index) => ({
+export const _reports = [...Array(23)].map((_, index) => ({
   id: _id(index),
-  title: _postTitles(index),
+  title: _reportTitles(index),
   description: _description(index),
-  coverUrl: `/assets/images/cover/cover-${index + 1}.webp`,
-  totalViews: 8829,
-  totalComments: 7977,
-  totalShares: 8556,
-  totalFavorites: 8870,
-  postedAt: _times(index),
-  author: {
-    name: _fullName(index),
-    avatarUrl: `/assets/images/avatar/avatar-${index + 1}.webp`,
-  },
 }));
 
 // ----------------------------------------------------------------------
@@ -84,12 +70,30 @@ export const _products = [...Array(24)].map((_, index) => {
   return {
     id: _id(index),
     name: _productNames(index),
-    price: _price(index),
+    prices: _prices(index),
     stock: _stock(index),
     productInfo: _productInfo(index),
     category: _category(index),
     imageUrl: `/assets/images/product/product-${setIndex}.webp`,
     status: index % 4 ? 'stocked' : 'low stock',
+   };
+});
+
+// ----------------------------------------------------------------------
+
+export const _orders = [...Array(24)].map((_, index) => {
+  const setIndex = index + 1;
+
+  return {
+    id: _id(index),
+    name: _productNames(index),
+    prices: _prices(index),
+    quantity: _quantity(index),
+    stock: _stock(index),
+    destination: _destination(index),
+    deliveryStaff: _deliveryStaff(index),
+    imageUrl: `/assets/images/product/product-${setIndex}.webp`,
+    status: _orderStatus(index % _orderStatus.length),
    };
 });
 

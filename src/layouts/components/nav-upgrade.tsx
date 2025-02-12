@@ -25,30 +25,15 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
           ),
         })}
       >
-        More features?
-      </Typography>
-      <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5 }}>
-        {`From only `}
-        <Box component="strong" sx={{ color: 'text.primary' }}>
-          $69
-        </Box>
+       Planned beauty
       </Typography>
 
       <Box
         component="img"
-        alt="Minimal dashboard"
-        src="/assets/illustrations/illustration-dashboard.webp"
+        alt="Planned Beauty"
+        src="https://nypost.com/wp-content/uploads/sites/2/2022/03/Best-Products-for-Oily-Skin.png"
         sx={{ width: 200, my: 2 }}
       />
-
-      <Button
-        href="https://material-ui.com/store/items/minimal-dashboard/"
-        target="_blank"
-        variant="contained"
-        color="inherit"
-      >
-        Upgrade to Pro
-      </Button>
     </Box>
   );
 }

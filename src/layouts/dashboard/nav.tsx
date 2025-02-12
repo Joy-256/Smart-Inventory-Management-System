@@ -29,6 +29,9 @@ export type NavContentProps = {
     title: string;
     icon: React.ReactNode;
     info?: React.ReactNode;
+    kind?: string; 
+    segment?: string; 
+    children?: any[];
   }[];
   slots?: {
     topArea?: React.ReactNode;
